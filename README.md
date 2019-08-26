@@ -47,7 +47,11 @@ registers are in a known state before doing anything. "on" and
 "off" commands will have no effect if the state is already on or
 off, or if the registers are in an unknown state.
 
-    teletext <->
+    teletext [-m even field line mask] [-o odd field line mask] [-]
+
+Optional line mask arguments are a 16 bit mask to create quiet lines
+in vbi output, first line is LSB, last is MSB. For example running
+"teletext -m 0xFFF0 -o 0x0FFF" will output teletext packets on the first four lines of even fields and last four lines of odd fields. If only one mask is provided the same value will be used for both fields.
 
 Running with no arguments will show a demo. Running "teletext -"
 will read packets from stdin and display them. You can therefore
